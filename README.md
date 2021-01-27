@@ -1,12 +1,10 @@
 ## About
 
-**NO LONGER MAINTAINED**
+**This is a fork from https://github.com/martinlindhe/laravel-vue-i18n-generator, created to give Laravel 8 compatibility and keep the maintenance of the package.**
 
 
-[![Build Status](https://travis-ci.org/martinlindhe/laravel-vue-i18n-generator.png?branch=master)](https://travis-ci.org/martinlindhe/laravel-vue-i18n-generator)
 
-
-Laravel 5 package that allows you to share your [Laravel localizations](https://laravel.com/docs/5.8/localization)
+Laravel package that allows you to share your [Laravel localizations](https://laravel.com/docs/5.8/localization)
 with your [vue](http://vuejs.org/) front-end, using [vue-i18n](https://github.com/kazupon/vue-i18n) or [vuex-i18n](https://github.com/dkfbasel/vuex-i18n).
 
 
@@ -18,7 +16,7 @@ Configuration paths have changed in Laravel 5.7, in order for this package to fu
 ## Install the package
 
 In your project:
-```composer require martinlindhe/laravel-vue-i18n-generator --dev```
+```composer require Danielmlozano/laravel-vue-i18n-generator --dev```
 
 ### For Laravel 5.4 and below:
 For older versions of the framework:
@@ -26,13 +24,13 @@ For older versions of the framework:
 Register the service provider in ```config/app.php```
 
 ```php
-MartinLindhe\VueInternationalizationGenerator\GeneratorProvider::class,
+Danielmlozano\VueInternationalizationGenerator\GeneratorProvider::class,
 ```
 
 Next, publish the package default config:
 
 ```
-php artisan vendor:publish --provider="MartinLindhe\VueInternationalizationGenerator\GeneratorProvider"
+php artisan vendor:publish --provider="Danielmlozano\VueInternationalizationGenerator\GeneratorProvider"
 ```
 
 ## Using vue-i18n
