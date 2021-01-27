@@ -3,11 +3,11 @@
     "license": "MIT",
     "description": "Generates a vue-i18n compatible include file from your Laravel translations.",
     "keywords": ["laravel","vue-i18n"],
-    "homepage": "http://github.com/Danielmlozano/laravel-vue-i18n-generator",
+    "homepage": "http://github.com/danielmlozano/laravel-vue-i18n-generator",
     "authors": [
         {
-            "name": "Martin Lindhe",
-            "email": "martin@ubique.se"
+            "name": "Daniel Mendoza",
+            "email": "daniel@danielmlozano.com"
         }
     ],
     "require": {
