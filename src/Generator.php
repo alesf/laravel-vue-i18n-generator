@@ -403,6 +403,13 @@ HEREDOC;
      */
     private function getES6Module($body)
     {
-        return "export default {$body}";
+        $js = <<<HEREDOC
+const translations = {$body}
+
+window.translations = translations;
+
+export default translations;
+HEREDOC;
+        return $js;
     }
 }
