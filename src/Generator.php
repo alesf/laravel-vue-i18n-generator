@@ -405,7 +405,6 @@ HEREDOC;
     {
         $js = <<<HEREDOC
 const translations = {$body}
-
 window.translations = translations;
 
 export default translations;
