@@ -11,13 +11,13 @@ use SplFileInfo;
 
 class Generator
 {
-    private $config;
+    private array $config;
 
-    private $availableLocales = [];
+    private array $availableLocales = [];
 
-    private $filesToCreate = [];
+    private array $filesToCreate = [];
 
-    private $langFiles;
+    private array $langFiles = [];
 
     protected const VUEX_I18N = 'vuex-i18n';
     protected const VUE_I18N = 'vue-i18n';
@@ -51,14 +51,16 @@ class Generator
     public function generateFromPath(
         string $path,
         string $format = 'es6',
-        bool   $withVendor = false,
-        ?array  $langFiles = []
+        bool $withVendor = false,
+        ?array $langFiles = []
     ): string {
         if (! is_dir($path)) {
             throw new Exception('Directory not found: ' . $path);
         }
 
-        $this->langFiles = $langFiles;
+        if ($langFiles) {
+            $this->langFiles = $langFiles;
+        }
 
         $locales = [];
         $files = [];
@@ -419,7 +421,13 @@ HEREDOC;
         $merged = $locale;
 
         foreach ($fallbackLocale as $key => &$value) {
-            if (is_array($value) && is_array($merged[$key] ?? null)) {
+            if (is_array($value)) {
+                if (! isset($merged[$key])) {
+                    $merged[$key] = $value;
+
+                    continue;
+                }
+
                 $merged[$key] = $this->addFallbackLocaleKeys($merged[$key], $value);
             } else if (! isset($merged[$key])) {
                 $merged[$key] = $value;
