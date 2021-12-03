@@ -7,7 +7,7 @@ with your [vue](http://vuejs.org/) front-end, using [vue-i18n](https://github.co
 ## Install the package
 
 In your project:
-```composer require megaversebe/laravel-vue-i18n-generator --dev``````
+```composer require megaverse/laravel-vue-i18n-generator --dev``````
 
 Next, publish the package default config:
 
