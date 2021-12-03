@@ -2,19 +2,17 @@
 
 **This is a fork from https://github.com/martinlindhe/laravel-vue-i18n-generator, created to give Laravel 8 compatibility and keep the maintenance of the package.**
 
-
-
 Laravel package that allows you to share your [Laravel localizations](https://laravel.com/docs/5.8/localization)
 with your [vue](http://vuejs.org/) front-end, using [vue-i18n](https://github.com/kazupon/vue-i18n) or [vuex-i18n](https://github.com/dkfbasel/vuex-i18n).
 ## Install the package
 
 In your project:
-```composer require Danielmlozano/laravel-vue-i18n-generator --dev``````
+```composer require megaversebe/laravel-vue-i18n-generator --dev``````
 
 Next, publish the package default config:
 
 ```
-php artisan vendor:publish --provider="Danielmlozano\VueInternationalizationGenerator\GeneratorProvider"
+php artisan vendor:publish --provider="Megaverse\VueInternationalizationGenerator\GeneratorProvider"
 ```
 
 ## Using vue-i18n
@@ -77,9 +75,6 @@ Object.keys(Locales).forEach(function (lang) {
 
 ...
 ```
-
-
-
 
 ## Using vuex-i18n
 
@@ -202,7 +197,6 @@ Vue template:
     <p>{{ $t('message.hello', {name: 'visitor'}) }}</p>
 </div>
 ```
-
 
 ## Notices
 

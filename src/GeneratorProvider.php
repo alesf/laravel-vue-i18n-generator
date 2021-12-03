@@ -1,4 +1,8 @@
-<?php namespace Danielmlozano\VueInternationalizationGenerator;
+<?php
+
+declare(strict_types=1);
+
+namespace Megaverse\VueInternationalizationGenerator;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -16,7 +20,7 @@ class GeneratorProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->app->singleton('vue-i18n.generate', function () {
             return new Commands\GenerateInclude;
@@ -41,7 +45,7 @@ class GeneratorProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
     }
 
@@ -50,7 +54,7 @@ class GeneratorProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return ['vue-i18n-generator'];
     }

@@ -3,15 +3,19 @@
     "license": "MIT",
     "description": "Generates a vue-i18n compatible include file from your Laravel translations.",
     "keywords": ["laravel","vue-i18n"],
-    "homepage": "http://github.com/danielmlozano/laravel-vue-i18n-generator",
+    "homepage": "http://github.com/megaversebe/laravel-vue-i18n-generator",
     "authors": [
         {
             "name": "Daniel Mendoza",
             "email": "daniel@danielmlozano.com"
+        },
+        {
+            "name": "Daniel Janik",
+            "email": "dawid.janik@megaverse.be"
         }
     ],
     "require": {
-        "php": ">=7.3.0",
+        "php": ">=7.4.0",
         "ext-json": "*",
         "ext-mbstring": "*",
         "illuminate/console": "~8.0",
@@ -22,13 +26,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Danielmlozano\\VueInternationalizationGenerator\\": "src/"
+            "Megaverse\\VueInternationalizationGenerator\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Danielmlozano\\VueInternationalizationGenerator\\GeneratorProvider"
+                "Megaverse\\VueInternationalizationGenerator\\GeneratorProvider"
             ]
         }
     }

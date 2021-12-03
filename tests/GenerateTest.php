@@ -1,6 +1,8 @@
 <?php
 
-use Danielmlozano\VueInternationalizationGenerator\Generator;
+declare(strict_types=1);
+
+use Megaverse\VueInternationalizationGenerator\Generator;
 
 class GenerateTest extends \PHPUnit_Framework_TestCase
 {
@@ -205,6 +207,44 @@ class GenerateTest extends \PHPUnit_Framework_TestCase
             . '    }' . PHP_EOL
             . '}' . PHP_EOL,
             (new Generator([]))->generateFromPath($root, $format));
+        $this->destroyLocaleFilesFrom($arr, $root);
+    }
+
+    function testFallbackLocale()
+    {
+        $format = 'es6';
+
+        $arr = [
+            'en' => [
+                'help' => [
+                    'yes' => 'yes',
+                    'no' => 'no',
+                ]
+            ],
+            'sv' => [
+                'help' => [
+                    'yes' => 'ja',
+                ]
+            ]
+        ];
+
+        $root = $this->generateLocaleFilesFrom($arr);
+        $this->assertEquals(
+            'export default {' . PHP_EOL
+            . '    "en": {' . PHP_EOL
+            . '        "help": {' . PHP_EOL
+            . '            "yes": "yes",' . PHP_EOL
+            . '            "no": "no"' . PHP_EOL
+            . '        }' . PHP_EOL
+            . '    },' . PHP_EOL
+            . '    "sv": {' . PHP_EOL
+            . '        "help": {' . PHP_EOL
+            . '            "yes": "ja",' . PHP_EOL
+            . '            "no": "no"' . PHP_EOL
+            . '        }' . PHP_EOL
+            . '    }' . PHP_EOL
+            . '}' . PHP_EOL,
+            (new Generator(['fallback_locale' => 'en']))->generateFromPath($root, $format));
         $this->destroyLocaleFilesFrom($arr, $root);
     }
 

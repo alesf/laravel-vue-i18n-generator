@@ -1,8 +1,13 @@
-<?php namespace Danielmlozano\VueInternationalizationGenerator\Commands;
+<?php
+
+declare(strict_types=1);
+
+namespace Megaverse\VueInternationalizationGenerator\Commands;
 
 use Illuminate\Console\Command;
 
-use Danielmlozano\VueInternationalizationGenerator\Generator;
+use Megaverse\VueInternationalizationGenerator\Generator;
+use RuntimeException;
 
 class GenerateInclude extends Command
 {
@@ -20,12 +25,7 @@ class GenerateInclude extends Command
      */
     protected $description = "Generates a vue-i18n|vuex-i18n compatible js array out of project translations";
 
-    /**
-     * Execute the console command.
-     * @return mixed
-     * @throws \Exception
-     */
-    public function handle()
+    public function handle(): int
     {
         $root = base_path() . config('vue-i18n-generator.langPath');
         $config = config('vue-i18n-generator');
@@ -45,7 +45,7 @@ class GenerateInclude extends Command
         }
 
         if (!$this->isValidFormat($format)) {
-            throw new \RuntimeException('Invalid format passed: ' . $format);
+            throw new RuntimeException('Invalid format passed: ' . $format);
         }
 
         if ($multipleFiles || $multipleLocales) {
@@ -56,7 +56,7 @@ class GenerateInclude extends Command
                 $this->info("Written to : " . $files);
             }
 
-            return;
+            return 0;
         }
 
         if ($langFiles) {
@@ -68,18 +68,17 @@ class GenerateInclude extends Command
 
 
         $jsFile = $this->getFileName($fileName);
+
         file_put_contents($jsFile, $data);
 
         if ($config['showOutputMessages']) {
             $this->info("Written to : " . $jsFile);
         }
+
+        return 0;
     }
 
-    /**
-     * @param string $fileNameOption
-     * @return string
-     */
-    private function getFileName($fileNameOption)
+    private function getFileName(?string $fileNameOption): string
     {
         if (isset($fileNameOption)) {
             return base_path() . $fileNameOption;
@@ -88,13 +87,8 @@ class GenerateInclude extends Command
         return base_path() . config('vue-i18n-generator.jsFile');
     }
 
-    /**
-     * @param string $format
-     * @return boolean
-     */
-    private function isValidFormat($format)
+    private function isValidFormat(string $format): bool
     {
-        $supportedFormats = ['es6', 'umd', 'json'];
-        return in_array($format, $supportedFormats);
+        return in_array($format, ['es6', 'umd', 'json']);
     }
 }
