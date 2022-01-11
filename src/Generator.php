@@ -422,7 +422,7 @@ HEREDOC;
 
         foreach ($fallbackLocale as $key => &$value) {
             if (is_array($value)) {
-                if (! isset($merged[$key])) {
+                if (! isset($merged[$key]) || ! is_array($merged[$key])) {
                     $merged[$key] = $value;
 
                     continue;
