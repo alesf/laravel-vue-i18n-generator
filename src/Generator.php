@@ -194,7 +194,7 @@ class Generator
      */
     protected function encodeJson(array $data, string $format): string
     {
-        $jsonLocales = json_encode($data,JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . PHP_EOL;
+        $jsonLocales = json_encode($data,JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . PHP_EOL;
 
         if (json_last_error() !== JSON_ERROR_NONE) {
             throw new Exception('Could not generate JSON, error code ' . json_last_error());
